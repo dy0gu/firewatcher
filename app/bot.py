@@ -8,8 +8,8 @@ import logging
 class Bot(commands.Bot):
     def __init__(self):
         super().__init__(
-            command_prefix=None,
-            intents=discord.Intents.default(),
+            command_prefix=" ",
+            intents=discord.Intents.none(),
             activity=discord.Activity(
                 type=discord.ActivityType.listening, name="commands!"
             ),
@@ -25,10 +25,11 @@ class Bot(commands.Bot):
 def main():
     logging.basicConfig(
         format="%(asctime)s [%(levelname)s] %(message)s",
-        level=logging.INFO,
+        level=logging.DEBUG,
         datefmt="%Y-%m-%d %H:%M:%S",
     )
-    logging.getLogger("discord").setLevel(logging.WARNING)
+    logging.getLogger("asyncio").setLevel(logging.WARNING)
+    logging.getLogger("discord").setLevel(logging.ERROR)
 
     bot = Bot()
     dotenv.load_dotenv(dotenv.find_dotenv())
@@ -36,7 +37,7 @@ def main():
 
     if not BOT_TOKEN:
         raise KeyError(
-            "BOT_TOKEN environment variable was not set correctly, create a .env file based on the provided .env.example file!"
+            "BOT_TOKEN environment variable was not set correctly, either set it manually before running the bot or create a .env file based on the provided .env.example file!"
         )
 
     bot.run(BOT_TOKEN, reconnect=True, log_handler=None)

@@ -19,7 +19,7 @@ class Events(commands.Cog):
             self.reconnect = True
 
             logging.info(
-                f"{self.bot.user.name} {VERSION} with ID {self.bot.user.id} is running..."
+                f"{self.bot.user.name} v{VERSION} with ID {self.bot.user.id} is running..."
             )
 
             logging.info("Connected to Discord.")
