@@ -31,7 +31,7 @@ def main():
     logging.getLogger("asyncio").setLevel(logging.WARNING)
     logging.getLogger("discord").setLevel(logging.CRITICAL)
 
-    bot = Bot()
+    bot: Bot = Bot()
     dotenv.load_dotenv(dotenv.find_dotenv())
     BOT_TOKEN: str | None = os.getenv("BOT_TOKEN")
 
