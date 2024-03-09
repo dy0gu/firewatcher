@@ -18,17 +18,9 @@ class Events(commands.Cog):
         if not self.reconnect:
             self.reconnect = True
 
-            from prettytable import PrettyTable
-
-            table: PrettyTable = PrettyTable(header=False)
-            table.add_row(
-                [
-                    self.bot.user.name,
-                    self.bot.user.id,
-                    VERSION,
-                ]
+            logging.info(
+                f"{self.bot.user.name} {VERSION} with ID {self.bot.user.id} is running..."
             )
-            print(table)
 
             logging.info("Connected to Discord.")
         else:
