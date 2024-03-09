@@ -28,7 +28,7 @@ class Events(commands.Cog):
                     VERSION,
                 ]
             )
-            logging.info(table)
+            print(table)
 
             logging.info("Connected to Discord.")
         else:
