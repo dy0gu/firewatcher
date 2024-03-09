@@ -29,7 +29,7 @@ def main():
         datefmt="%Y-%m-%d %H:%M:%S",
     )
     logging.getLogger("asyncio").setLevel(logging.WARNING)
-    logging.getLogger("discord").setLevel(logging.ERROR)
+    logging.getLogger("discord").setLevel(logging.CRITICAL)
 
     bot = Bot()
     dotenv.load_dotenv(dotenv.find_dotenv())

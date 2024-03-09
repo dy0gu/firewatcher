@@ -19,7 +19,7 @@ class Events(commands.Cog):
             self.reconnect = True
 
             logging.info(
-                f"{self.bot.user.name} v{VERSION} with ID {self.bot.user.id} is running..."
+                f"{self.bot.user.name} v{VERSION} with ID {self.bot.user.id} started..."
             )
 
             logging.info("Connected to Discord.")
@@ -30,7 +30,7 @@ class Events(commands.Cog):
     async def on_disconnect(self):
         if self.connected:
             self.connected = False
-            logging.critical("Connection to Discord lost!")
+            logging.critical(f"Connection to Discord lost, reconnecting...")
 
     @commands.Cog.listener()
     async def on_ready(self):
