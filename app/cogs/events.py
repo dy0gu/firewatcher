@@ -15,28 +15,29 @@ class Events(commands.Cog):
         if not self.connected:
             self.connected = True
 
-        if self.first:
-            self.first = False
-            logging.info(
-                f"{self.bot.user.name} v{VERSION} with ID {self.bot.user.id} connected to Discord."
-            )
-
     @commands.Cog.listener()
     async def on_resumed(self):
         if not self.connected:
             self.connected = True
-        logging.info("Reconnected to Discord.")
+            logging.info("Reconnected!")
 
     @commands.Cog.listener()
     async def on_disconnect(self):
         if self.connected:
             self.connected = False
-            logging.error(f"Connection to Discord lost, reconnecting...")
+            logging.error(
+                f"Connection lost, a reconnect will be attempted until successful."
+            )
 
     @commands.Cog.listener()
     async def on_ready(self):
-        logging.info(f"Ready to respond!")
+        if self.first:
+            self.first = False
+            logging.info(
+                f"{self.bot.user.name} v{VERSION} with ID {self.bot.user.id} operational."
+            )
 
 
 async def setup(bot: commands.Bot):
+    logging.info("Loaded event listeners.")
     await bot.add_cog(Events(bot))
