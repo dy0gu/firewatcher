@@ -39,5 +39,4 @@ class Events(commands.Cog):
 
 
 async def setup(bot: commands.Bot):
-    logging.info("Loaded event listeners.")
     await bot.add_cog(Events(bot))
