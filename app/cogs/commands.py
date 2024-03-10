@@ -5,7 +5,7 @@ from constants import API_PATH, LOCATIONS
 
 
 def log_invocation(interaction: discord.Interaction):
-    name: str = interaction.command.name
+    name: str = interaction.command.name.capitalize()
     user: str = interaction.user.id
     origin: str = f"guild {interaction.guild_id}" if interaction.guild_id else "DMs"
     logging.debug(f"{name} command invoked by user {user} in {origin}.")
