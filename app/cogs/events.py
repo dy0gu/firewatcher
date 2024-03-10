@@ -4,7 +4,7 @@ from constants import VERSION
 
 
 class Events(commands.Cog):
-    reconnect: bool = False
+    first: bool = True
     connected: bool = False
 
     def __init__(self, bot: commands.Bot):
@@ -15,26 +15,27 @@ class Events(commands.Cog):
         if not self.connected:
             self.connected = True
 
-        if not self.reconnect:
-            self.reconnect = True
-
+        if self.first:
+            self.first = False
             logging.info(
-                f"{self.bot.user.name} v{VERSION} with ID {self.bot.user.id} started..."
+                f"{self.bot.user.name} v{VERSION} with ID {self.bot.user.id} connected to Discord."
             )
 
-            logging.info("Connected to Discord.")
-        else:
-            logging.info("Reconnected to Discord.")
+    @commands.Cog.listener()
+    async def on_resumed(self):
+        if not self.connected:
+            self.connected = True
+        logging.info("Reconnected to Discord.")
 
     @commands.Cog.listener()
     async def on_disconnect(self):
         if self.connected:
             self.connected = False
-            logging.critical(f"Connection to Discord lost, reconnecting...")
+            logging.error(f"Connection to Discord lost, reconnecting...")
 
     @commands.Cog.listener()
     async def on_ready(self):
-        logging.info(f"Ready to go!")
+        logging.info(f"Ready to respond!")
 
 
 async def setup(bot: commands.Bot):
