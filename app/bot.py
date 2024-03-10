@@ -31,7 +31,6 @@ def main():
     logging.getLogger("asyncio").setLevel(logging.WARNING)
     logging.getLogger("discord").setLevel(logging.CRITICAL)
 
-    bot: Bot = Bot()
     dotenv.load_dotenv(dotenv.find_dotenv())
     BOT_TOKEN: str | None = os.getenv("BOT_TOKEN")
 
@@ -39,6 +38,8 @@ def main():
         raise KeyError(
             "BOT_TOKEN environment variable was not set correctly, either set it manually before running the bot or create a .env file based on the provided .env.example file!"
         )
+
+    bot: Bot = Bot()
 
     bot.run(BOT_TOKEN, reconnect=True, log_handler=None)
 
