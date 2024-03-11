@@ -7,7 +7,9 @@ on:
 
 jobs:
   deploy:
-    environment: Production
+    environment:
+      name: Production
+      url: https://discord.com/oauth2/authorize?client_id=999712607227359274&permissions=0&scope=bot
     name: Deploy
     runs-on: ubuntu-latest
 
