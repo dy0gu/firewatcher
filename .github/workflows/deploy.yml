@@ -33,5 +33,5 @@ jobs:
             echo 'BOT_TOKEN="${{ secrets.TOKEN }}"' > .env
             tmux new -d -s deployment
             tmux split-window -h -t deployment:0.0
-            tmux send-keys -t deployment:0.0 "python3 bot.py" Enter
+            tmux send-keys -t deployment:0.0 "python3 app/bot.py" Enter
             tmux send-keys -t deployment:0.1 "htop" Enter
