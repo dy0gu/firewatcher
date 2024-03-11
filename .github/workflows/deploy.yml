@@ -21,8 +21,7 @@ jobs:
           key: ${{ secrets.KEY }}
           script: |
             cd ~
-            echo '* libraries/restart-without-asking boolean true' | sudo debconf-set-selections
-            sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove && sudo apt-get autoclean
+            sudo apt-get update && sudo NEEDRESTART_MODE=a apt-get upgrade -y && sudo apt-get autoremove && sudo apt-get autoclean
             sudo apt-get install neovim -y
             sudo apt-get install tmux -y
             sudo apt-get install git -y
