@@ -3,6 +3,7 @@ from discord.ext import commands
 import dotenv
 import os
 import logging
+from datetime import datetime
 
 
 class Bot(commands.Bot):
@@ -27,6 +28,10 @@ def main():
         format="%(asctime)s [%(levelname)s] %(message)s",
         level=logging.DEBUG,
         datefmt="%Y-%m-%d %H:%M:%S",
+        handlers=[
+            logging.FileHandler("bot.log"),
+            logging.StreamHandler(),
+        ],
     )
     logging.getLogger("asyncio").setLevel(logging.WARNING)
     logging.getLogger("discord").setLevel(logging.CRITICAL)
