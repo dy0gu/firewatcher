@@ -34,7 +34,7 @@ class Events(commands.Cog):
         if self.first:
             self.first = False
             logging.info(
-                f"{self.bot.user.name} v{VERSION} with ID {self.bot.user.id} operational."
+                f"{self.bot.user.name} v{VERSION} with ID {self.bot.user.id} initialized."
             )
 
 
