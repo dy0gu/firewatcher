@@ -20,7 +20,7 @@ jobs:
 
     # Install Docker if not installed, pull the built images, stop any previous containers and start the new ones
     steps:
-      - uses: appleboy/ssh-action@v1
+      - uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
