@@ -1,6 +1,6 @@
 VERSION: str = "1.0.0"
 
-API_PATH: str = "https://api.fogos.pt/v2/incidents/active"
+API_PATH: str = "https://api.fogos.pt/v2"
 
 LOCATIONS: dict[str, list[str]] = {
     "Aveiro": [
