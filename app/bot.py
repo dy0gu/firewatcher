@@ -3,7 +3,6 @@ from discord.ext import commands
 import dotenv
 import os
 import logging
-from datetime import datetime
 
 
 class Bot(commands.Bot):
