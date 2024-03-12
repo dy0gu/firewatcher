@@ -1,0 +1,4 @@
+services:
+  firewatcher:
+    build: .
+    restart: unless-stopped
