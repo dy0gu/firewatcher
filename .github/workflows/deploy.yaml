@@ -6,15 +6,21 @@ on:
       - prod
 
 jobs:
+  # Call the build workflow
+  build:
+    name: Build
+    uses: ./.github/workflows/build.yaml
   deploy:
+    name: Deploy
+    needs: build
     environment:
       name: Production
       url: https://discord.com/oauth2/authorize?client_id=999712607227359274&permissions=0&scope=bot
-    name: Deploy
     runs-on: ubuntu-latest
 
+    # Install Docker if not installed, pull the built images, stop any previous containers and start the new ones
     steps:
-      - uses: appleboy/ssh-action@v1.0.3
+      - uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
@@ -38,14 +44,6 @@ jobs:
             sudo apt-get -y update
             sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-            rm -rf *
-
-            sudo apt-get -y install git
-            git clone -b prod --single-branch ${{ github.server_url }}/${{ github.repository }}.git Repository
-            cd Repository
-            echo 'BOT_TOKEN="${{ secrets.TOKEN }}"' > .env
-
-
-            sudo docker compose down -v
-            sudo docker system prune -a -f
-            sudo docker compose up -d
+            sudo docker compose down --remove-orphans --volumes
+            sudo docker compose pull firewatcher
+            sudo docker compose up --detach
