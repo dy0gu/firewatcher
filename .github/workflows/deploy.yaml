@@ -1,0 +1,75 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - prod
+
+jobs:
+  deploy:
+    environment:
+      name: Production
+      url: https://discord.com/oauth2/authorize?client_id=999712607227359274&permissions=0&scope=bot
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    # for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove -y $pkg; done
+    # sudo apt-get purge -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
+    #     if [ -x "$(command -v docker)" ]; then
+    #   sudo apt-get -y remove docker docker-engine docker.io containerd runc
+    #   sudo apt-get -y autoremove
+    #   sudo apt-get -y autoclean
+    #   sudo apt-get -y update
+    #   sudo apt-get -y upgrade
+    #   sudo apt-get -y install apt-transport-https ca-certificates curl gnupg lsb-release
+    #   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    #   echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    #   sudo apt-get -y update
+    #   sudo apt-get -y install docker-ce docker-ce-cli containerd.io
+    #   sudo usermod -aG docker $USER
+    #   sudo systemctl enable docker
+    #   sudo systemctl start docker
+    # else
+    #   sudo apt-get -y install apt-transport-https ca-certificates curl gnupg lsb-release
+    #   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    #   echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    #   sudo apt-get -y update
+    #   sudo apt-get -y install docker-ce docker-ce-cli containerd.io
+    #   sudo usermod -aG docker $USER
+    #   sudo systemctl enable docker
+    #   sudo systemctl start docker
+    # fi
+    steps:
+      - uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          script: |
+            cd ~
+
+            sudo apt-get -y update
+            sudo apt-get -y upgrade
+            sudo apt-get -y autoclean
+            sudo apt-get -y autoremove
+
+            sudo apt-get -y install ca-certificates curl
+            sudo install -m 0755 -d /etc/apt/keyrings
+            sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+            sudo chmod a+r /etc/apt/keyrings/docker.asc
+            echo \
+              "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+              $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+              sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+            sudo apt-get -y update
+            sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+            sudo apt-get -y install git
+
+            rm -rf *
+
+            git clone -b prod --single-branch ${{ github.server_url }}/${{ github.repository }}.git Repository
+            cd Repository
+            echo 'BOT_TOKEN="${{ secrets.TOKEN }}"' > .env
+
+            docker-compose up -d
