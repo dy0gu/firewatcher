@@ -1,4 +1,6 @@
 services:
   firewatcher:
-    build: .
+    build:
+      context: .
+      no-cache: true
     restart: unless-stopped
