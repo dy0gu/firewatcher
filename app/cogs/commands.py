@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import logging
-import grequests
+import requests
 from constants import API_PATH, LOCATIONS
 
 
@@ -39,17 +39,17 @@ class Commands(commands.Cog):
 
         if location not in locations:
             await interaction.followup.send(
-                f"{location} is not a valid location, make sure you spelled it correctly or try another location.",
+                f"**{location}** is not a valid location, make sure you spelled it correctly or try another location.",
             )
             return
 
         api: str = f"{API_PATH}/incidents/active"
-        response = await grequests.get(api)
+        response: requests.Response = requests.get(api)
         fires: list[dict] = {}
         try:
             data = response.json()
-            if not data["success"]:
-                raise ValueError
+            if response.status_code != 200 or not data["success"]:
+                raise Exception
             fires: list[dict] = data["data"]
         except:
             logging.error(f"Failed to fetch data from API.")
@@ -58,23 +58,17 @@ class Commands(commands.Cog):
             )
             return
 
-        if not fires:
-            await interaction.followup.send(
-                f"There are no active fires in any tracked location."
-            )
-            return
-
         fires = [fire for fire in fires if (location in fire["location"] and fire["active"])]
 
         if not fires:
-            await interaction.followup.send(f"There are no active fires in {location}.")
+            await interaction.followup.send(f"There are no active fires in **{location}**.")
         else:
             info: list[str] = [
                 f"\n\n🌎 {fire["location"]}\n🕝 {fire["date"]} {fire["hour"]}\n🧍 {fire["man"]}\n🚒 {fire["terrain"]}\n🚁 {fire["aerial"]}"
                 for fire in fires
             ]
             await interaction.followup.send(
-                f"There {"is" if len(fires) == 1 else "are"} {len(fires)} active fire{'' if len(fires) == 1 else 's'} in {location}: + {', '.join(info)}"
+                f"There {"is" if len(fires) == 1 else "are"} **{len(fires)}** active fire{'' if len(fires) == 1 else 's'} in **{location}**: + {', '.join(info)}"
             )
 
 
