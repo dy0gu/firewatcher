@@ -33,6 +33,8 @@ def main():
         ],
     )
     logging.getLogger("asyncio").setLevel(logging.WARNING)
+    logging.getLogger("requests").setLevel(logging.WARNING)
+    logging.getLogger("urllib3").setLevel(logging.WARNING)
     logging.getLogger("discord").setLevel(logging.CRITICAL)
 
     dotenv.load_dotenv(dotenv.find_dotenv())
