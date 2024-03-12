@@ -2,5 +2,5 @@ services:
   firewatcher:
     build:
       context: .
-      no-cache: true
+      no_cache: true
     restart: unless-stopped
