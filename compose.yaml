@@ -1,6 +1,4 @@
 services:
   firewatcher:
-    build:
-      context: .
-      no_cache: true
+    image: ghcr.io/dy0gu/firewatcher
     restart: unless-stopped
