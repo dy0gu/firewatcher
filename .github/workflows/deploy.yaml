@@ -47,5 +47,5 @@ jobs:
 
 
             sudo docker compose down -v
-            sudo docker system prune -a
+            sudo docker system prune -a -f
             sudo docker compose up -d
