@@ -41,7 +41,7 @@ jobs:
         with:
           context: .
           file: ${{ matrix.dockerfile }}
-          secrets: ${{ matrix.secret-id }}=${{ secrets.[matrix.secret-value] }}
+          secrets: ${{ matrix.secret-id }}=${{ secrets[matrix.secret-value] }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
