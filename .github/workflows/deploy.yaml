@@ -18,13 +18,25 @@ jobs:
       url: https://discord.com/oauth2/authorize?client_id=999712607227359274&permissions=0&scope=bot
     runs-on: ubuntu-latest
 
-    # Install Docker if not installed, pull the built images, stop any previous containers and start the new ones
     steps:
-      - uses: appleboy/ssh-action@v1.0.3
+      - name: Copy docker-compose file to remote server
+        uses: actions/checkout@v4.1.1
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
+          source: "docker-compose.yaml"
+          target: "~/"
+          overwrite: true
+      # Install Docker if not installed, pull the built images, stop any previous containers and start the new ones
+      - name: Run Docker commands on remote server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          # Assumes remote is running Ubuntu (minimal)
           script: |
             cd ~
 
@@ -44,12 +56,8 @@ jobs:
             sudo apt-get -y update
             sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-            echo "services:
-              firewatcher:
-                image: ghcr.io/dy0gu/firewatcher:prod
-                restart: unless-stopped" > compose.yaml
-
             echo ${{ secrets.GITHUB_TOKEN }} | sudo docker login ghcr.io -u dy0gu --password-stdin
-            sudo docker compose down --remove-orphans --volumes
             sudo docker compose pull
+            sudo docker compose down --remove-orphans --volumes
             sudo docker compose up --detach
+            rm -f docker-compose.yaml
