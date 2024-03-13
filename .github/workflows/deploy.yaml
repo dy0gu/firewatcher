@@ -49,6 +49,7 @@ jobs:
                 image: ghcr.io/dy0gu/firewatcher
                 restart: unless-stopped" > compose.yaml
 
+            echo ${{ secrets.GITHUB_TOKEN }} | sudo docker login ghcr.io -u dy0gu --password-stdin
             sudo docker compose down --remove-orphans --volumes
             sudo docker compose pull
-            sudo docker compose --detach
+            sudo docker compose up --detach
