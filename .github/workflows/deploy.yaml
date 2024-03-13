@@ -8,6 +8,7 @@ on:
 jobs:
   # Call the build workflow
   build:
+    name: Build
     secrets: inherit
     uses: ./.github/workflows/build.yaml
   deploy:
