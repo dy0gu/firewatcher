@@ -13,8 +13,6 @@ jobs:
         include:
           - dockerfile: ./Dockerfile
             image: ghcr.io/dy0gu/firewatcher
-            secret-id: BOT_TOKEN
-            secret-value: BOT_TOKEN
     # Sets the permissions granted to the GITHUB_TOKEN for the actions in this job
     permissions:
       contents: read
@@ -41,7 +39,7 @@ jobs:
         with:
           context: .
           file: ${{ matrix.dockerfile }}
-          secrets: "${{ matrix.secret-id }}=${{ secrets[matrix.secret-value] }}"
+          secrets: "BOT_TOKEN=${{ secrets.BOT_TOKEN }}"
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

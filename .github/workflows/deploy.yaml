@@ -44,8 +44,11 @@ jobs:
             sudo apt-get -y update
             sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-            sudo docker context create prod --docker "host=ssh://${{ secrets.USERNAME }}@${{ secrets.HOST }}"
-            sudo docker context use prod
+            echo "services:
+              firewatcher:
+                image: ghcr.io/dy0gu/firewatcher
+                restart: unless-stopped" > compose.yaml
+
             sudo docker compose down --remove-orphans --volumes
             sudo docker compose pull
             sudo docker compose --detach
