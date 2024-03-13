@@ -12,8 +12,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      # Add BOT_TOKEN to the image environment
-      - run: echo BOT_TOKEN=\"${{ secrets.BOT_TOKEN }}\" > .env
+      - name: Set up image environment
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        run: |
+        touch .env
+        echo BOT_TOKEN="${BOT_TOKEN}" >> .env
       # Once published, the packages are scoped to the account defined here
       - name: Log in to the container registry
         uses: docker/login-action@v3.0.0
