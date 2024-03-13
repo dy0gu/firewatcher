@@ -19,8 +19,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v4.1.1
       - name: Copy docker-compose file to remote server
-        uses: actions/checkout@v4.1.1
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
