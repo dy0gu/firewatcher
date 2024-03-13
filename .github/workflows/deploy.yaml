@@ -63,6 +63,6 @@ jobs:
             echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u dy0gu --password-stdin
             docker compose pull
             docker compose down --remove-orphans --volumes
-            docker compose up --detach
+            docker compose up --detach --wait --wait-timeout 30
             docker logout ghcr.io
             rm -f docker-compose.yaml
