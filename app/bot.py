@@ -35,7 +35,7 @@ def main():
     logging.getLogger("asyncio").setLevel(logging.WARNING)
     logging.getLogger("requests").setLevel(logging.WARNING)
     logging.getLogger("urllib3").setLevel(logging.WARNING)
-    logging.getLogger("discord").setLevel(logging.CRITICAL)
+    logging.getLogger("discord").setLevel(logging.ERROR)
 
     dotenv.load_dotenv(dotenv.find_dotenv())
     BOT_TOKEN: str | None = os.getenv("BOT_TOKEN")
@@ -51,9 +51,7 @@ def main():
     try:
         bot.run(BOT_TOKEN, reconnect=True, log_handler=None)
     except discord.errors.HTTPException and discord.errors.LoginFailure as exception:
-        logging.critical(
-            f"{exception}, check if the BOT_TOKEN environment variable is correct!"
-        )
+        logging.critical(f"{exception}")
 
 
 if __name__ == "__main__":
