@@ -1,4 +1,4 @@
 services:
   firewatcher:
-    image: ghcr.io/dy0gu/firewatcher
+    image: ghcr.io/dy0gu/firewatcher:prod
     restart: unless-stopped
