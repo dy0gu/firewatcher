@@ -41,13 +41,19 @@ def main():
     BOT_TOKEN: str | None = os.getenv("BOT_TOKEN")
 
     if not BOT_TOKEN:
-        raise KeyError(
-            "BOT_TOKEN environment variable was not set correctly, either set it manually before running the bot or create a .env file based on the provided .env.example file!"
+        logging.critical(
+            "BOT_TOKEN environment variable is missing, either set it manually before running the bot or create a .env file based on the provided .env.example file!"
         )
+        return
 
     bot: Bot = Bot()
 
-    bot.run(BOT_TOKEN, reconnect=True, log_handler=None)
+    try:
+        bot.run(BOT_TOKEN, reconnect=True, log_handler=None)
+    except discord.errors.HTTPException and discord.errors.LoginFailure as exception:
+        logging.critical(
+            f"{exception}, check if the BOT_TOKEN environment variable is correct!"
+        )
 
 
 if __name__ == "__main__":
