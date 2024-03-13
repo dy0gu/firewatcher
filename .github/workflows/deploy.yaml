@@ -57,13 +57,9 @@ jobs:
             sudo apt-get -y update
             sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-            sudo groupadd docker
-            sudo usermod -aG docker $USER
-            newgrp docker
-
-            echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u dy0gu --password-stdin
-            docker compose pull
-            docker compose down --remove-orphans --volumes
-            docker compose up --detach --wait --wait-timeout 30
-            docker logout ghcr.io
+            echo ${{ secrets.GITHUB_TOKEN }} | sudo docker login ghcr.io -u dy0gu --password-stdin
+            sudo docker compose pull
+            sudo docker compose down --remove-orphans --volumes
+            sudo docker compose up --detach --wait --wait-timeout 30
+            sudo docker logout ghcr.io
             rm -f docker-compose.yaml
