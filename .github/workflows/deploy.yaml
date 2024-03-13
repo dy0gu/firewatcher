@@ -46,7 +46,7 @@ jobs:
 
             echo "services:
               firewatcher:
-                image: ghcr.io/dy0gu/firewatcher
+                image: ghcr.io/dy0gu/firewatcher:prod
                 restart: unless-stopped" > compose.yaml
 
             echo ${{ secrets.GITHUB_TOKEN }} | sudo docker login ghcr.io -u dy0gu --password-stdin
