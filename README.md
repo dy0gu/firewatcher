@@ -20,10 +20,29 @@ Firewatcher gets its data from the [fogos.pt](https://fogos.pt/) API and is most
   pip install -r requirements.txt
   ```
 
+- Create a `.env` file based on the `.env.example` file.
+
 ## Usage 💻
 
-- Run the bot:
+- Run the app:
 
   ```shell
   python bot.py
+  ```
+
+## Containerization 📦
+
+To run in a containerized environment use the provided `Dockerfile`, the runner machine only needs to have Docker installed.
+There is still the need to create a `.env` file before the build, since its contents need to be included in the image.
+
+- Build the image:
+
+  ```shell
+  docker build -t firewatcher .
+  ```
+
+- Run the container:
+
+  ```shell
+  docker run -d firewatcher
   ```
