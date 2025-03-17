@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/dy0gu/firewatcher/compare/v2.1.0...v2.1.1) (2025-03-17)
+
+
+### Bug Fixes
+
+* Add checkout ([ab06c32](https://github.com/dy0gu/firewatcher/commit/ab06c32e1d4717c0d14ea618e5b81efe72621eee))
+
 ## [2.1.0](https://github.com/dy0gu/firewatcher/compare/v2.0.3...v2.1.0) (2025-03-17)
 
 
