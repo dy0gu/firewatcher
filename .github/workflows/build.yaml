@@ -33,8 +33,10 @@ jobs:
       - uses: docker/metadata-action@v5
         id: metadata
         with:
-          images: ghcr.io/${{ github.repository }}
-          tags: type=semver,pattern={{version}},value=${{ inputs.version }}
+          images: |
+            ${{ github.repository }}
+          tags: |
+            type=semver,pattern={{version}},value=${{ inputs.version }}
       - uses: docker/build-push-action@v6
         with:
           context: .
