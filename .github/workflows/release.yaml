@@ -33,3 +33,4 @@ jobs:
     uses: ./.github/workflows/build.yaml
     with:
       version: ${{ needs.metadata.outputs.tag-name }}
+    secrets: inherit
