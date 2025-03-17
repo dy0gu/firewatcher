@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.10](https://github.com/dy0gu/firewatcher/compare/v2.1.9...v2.1.10) (2025-03-17)
+
+
+### Bug Fixes
+
+* Remove typo ([3fdd60f](https://github.com/dy0gu/firewatcher/commit/3fdd60f97492803290e1949db2539c82cc8c3be1))
+
 ## [2.1.9](https://github.com/dy0gu/firewatcher/compare/v2.1.8...v2.1.9) (2025-03-17)
 
 
