@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/dy0gu/firewatcher/compare/v2.0.0...v2.0.1) (2025-03-17)
+
+
+### Bug Fixes
+
+* Add metadata to docker build ([1d87a55](https://github.com/dy0gu/firewatcher/commit/1d87a5580dcefd3075699e2dd599286c6d632141))
+
 ## [2.0.0](https://github.com/dy0gu/firewatcher/compare/v1.0.0...v2.0.0) (2025-03-17)
 
 
