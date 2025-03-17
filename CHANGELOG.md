@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.9](https://github.com/dy0gu/firewatcher/compare/v2.1.8...v2.1.9) (2025-03-17)
+
+
+### Bug Fixes
+
+* Attempt multi registry publishing ([5f374b9](https://github.com/dy0gu/firewatcher/commit/5f374b955a15d718b516cbe8ec4ff3ce6def9fdb))
+
 ## [2.1.8](https://github.com/dy0gu/firewatcher/compare/v2.1.7...v2.1.8) (2025-03-17)
 
 
