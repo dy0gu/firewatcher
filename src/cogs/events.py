@@ -1,6 +1,6 @@
 from discord.ext import commands
 import logging
-from constants import VERSION
+from version import __version__
 
 
 class Events(commands.Cog):
@@ -26,7 +26,7 @@ class Events(commands.Cog):
         if self.connected:
             self.connected = False
             logging.error(
-                f"Connection lost, a reconnect will be attempted until successful."
+                "Connection lost, a reconnect will be attempted until successful."
             )
 
     @commands.Cog.listener()
@@ -34,7 +34,7 @@ class Events(commands.Cog):
         if self.first:
             self.first = False
             logging.info(
-                f"{self.bot.user.name} v{VERSION} with ID {self.bot.user.id} started."
+                f"{self.bot.user.name} v{__version__} with ID {self.bot.user.id} started."
             )
 
 

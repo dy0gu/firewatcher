@@ -7,7 +7,9 @@ import views.fires
 def log_invocation(interaction: discord.Interaction):
     name: str = interaction.command.name
     user: str = interaction.user.id
-    origin: str = f"guild {interaction.guild_id}" if interaction.guild_id else "DMs"
+    origin: str = (
+        f"guild {interaction.guild_id}" if interaction.guild_id else "DMs"
+    )
     logging.debug(f"Command /{name} invoked by user {user} in {origin}.")
 
 
@@ -16,7 +18,8 @@ class Commands(commands.Cog):
         self.bot = bot
 
     @discord.app_commands.command(
-        name="fires", description="Get information on active fires in a location."
+        name="fires",
+        description="Get information on active fires in a location.",
     )
     async def fires(self, interaction: discord.Interaction):
         await interaction.response.defer(ephemeral=True)

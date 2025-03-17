@@ -12,24 +12,26 @@ class FiresView(discord.ui.View):
 
 
 class InfoEmbed(discord.Embed):
-    def __init__(self, info: list[dict], town: str, error: bool = False):
+    def __init__(self, info: list[str], town: str, error: bool = False):
         super().__init__(
             title=(
                 f"There {'is' if len(info) == 1 else 'are'} "
-                f"{f'no' if len(info) == 0 else f'{len(info)}'} "
+                f"{'no' if not info else len(info)} "
                 f"active fire{'' if len(info) == 1 else 's'} in {town}"
-                f"{'!' if len(info) == 0 else ':'}"
-                if not error else "Information could not be fetched at this time, please try again later."
+                f"{'!' if not info else ':'}"
+                if not error
+                else "Information could not be fetched at this time, please try again later."
             ),
             description=(
-                f"{f'⠀{"".join(info)}' if len(info) != 0 else ''}"
-                f"{'\n\n\nClick [here](https://fogos.pt/) to see more information.' if len(info) != 0 else ''}"
-                if not error else ''
+                f"⠀{''.join(info)}\n\n\nClick [here](https://fogos.pt/) to see more information."
+                if info and not error
+                else ""
             ),
             timestamp=discord.utils.utcnow(),
             color=discord.Color.orange(),
-            url=None
+            url=None,
         )
+
 
 class TownDropdown(discord.ui.Select):
     district: str
@@ -37,7 +39,9 @@ class TownDropdown(discord.ui.Select):
     def __init__(self, district: str, default: str = None):
         self.district = district
         options: list[discord.SelectOption] = [
-            discord.SelectOption(label=town, value=town, default=town == default)
+            discord.SelectOption(
+                label=town, value=town, default=town == default
+            )
             for town in LOCATIONS[district]
         ]
 
@@ -57,11 +61,13 @@ class TownDropdown(discord.ui.Select):
             error = True
 
         info: list[str] = [
-            (f"{"\n" if i == 0 else '\n\n\n'}🌎⠀  {fire['location']}"
-             f"\n\n🕝⠀  {fire['date']} {fire['hour']}"
-             f"\n\n🧍⠀  {fire['man']}"
-             f"\n\n🚒⠀  {fire['terrain']}"
-             f"\n\n🚁⠀  {fire['aerial']}")
+            (
+                ("\n" if i == 0 else "\n\n\n") + f"🌎⠀  {fire['location']}"
+                f"\n\n🕝⠀  {fire['date']} {fire['hour']}"
+                f"\n\n🧍⠀  {fire['man']}"
+                f"\n\n🚒⠀  {fire['terrain']}"
+                f"\n\n🚁⠀  {fire['aerial']}"
+            )
             for i, fire in enumerate(fires)
         ]
 

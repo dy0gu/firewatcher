@@ -1,5 +1,4 @@
 from discord.ext import tasks, commands
-import logging
 
 
 class Tasks(commands.Cog):

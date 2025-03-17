@@ -1,4 +1,17 @@
+name: firewatcher
+
 services:
-  firewatcher:
-    image: ghcr.io/dy0gu/firewatcher:prod
+  bot:
+    image: ghcr.io/dy0gu/firewatcher:latest
+    build:
+      context: .
+    pull_policy: always
     restart: unless-stopped
+    init: true
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+    healthcheck:
+      test: ["CMD-SHELL", "pgrep -f bot.py"]
+      interval: 10s
+      timeout: 5s
+      retries: 5

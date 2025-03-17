@@ -11,8 +11,9 @@ class Bot(commands.Bot):
             command_prefix=" ",
             intents=discord.Intents.none(),
             activity=discord.Activity(
-                type=discord.ActivityType.listening, name="commands!"
+                type=discord.ActivityType.listening, name="you!"
             ),
+            status=discord.Status.idle,
         )
 
     async def setup_hook(self) -> None:
@@ -50,7 +51,9 @@ def main():
 
     try:
         bot.run(BOT_TOKEN, reconnect=True, log_handler=None)
-    except discord.errors.HTTPException and discord.errors.LoginFailure as exception:
+    except (
+        discord.errors.HTTPException and discord.errors.LoginFailure
+    ) as exception:
         logging.critical(f"{exception}")
 
 

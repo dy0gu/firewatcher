@@ -1,0 +1,29 @@
+name: release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  metadata:
+    runs-on: ubuntu-latest
+    outputs:
+      release-created: ${{ steps.metadata.outputs.release_created }}
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: metadata
+        with:
+          config-file: release.json
+          manifest-file: .manifest.json
+  build:
+    needs: [metadata]
+    if: ${{ needs.metadata.outputs.release-created}}
+    uses: ./.github/workflows/build.yaml

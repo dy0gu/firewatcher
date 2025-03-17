@@ -1,0 +1,16 @@
+name: "test"
+
+on:
+  push:
+    branches: [main]
+  pull_request_target:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "No tests yet"

@@ -1,5 +1,3 @@
-VERSION: str = "1.0.0"
-
 LOCATIONS: dict[str, list[str]] = {
     "Aveiro": [
         "Águeda",

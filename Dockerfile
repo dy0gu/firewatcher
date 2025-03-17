@@ -1,8 +1,11 @@
-FROM gorialis/discord.py
+FROM gorialis/discord.py:minimal
 
-COPY requirements.txt ./
-RUN pip install -r requirements.txt
+WORKDIR /app
+
+COPY pyproject.toml .
+
+RUN pip install .
 
 COPY . .
 
-CMD ["python", "app/bot.py"]
+ENTRYPOINT [ "python", "src/bot.py" ]

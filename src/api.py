@@ -11,6 +11,8 @@ def fires(location: str) -> dict:
         raise Exception
     fires: list[dict] = json["data"]
     fires = [
-        fire for fire in fires if (location in fire["location"] and fire["active"])
+        fire
+        for fire in fires
+        if (location in fire["location"] and fire["active"])
     ]
     return fires
