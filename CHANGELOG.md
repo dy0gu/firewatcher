@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.3](https://github.com/dy0gu/firewatcher/compare/v2.0.2...v2.0.3) (2025-03-17)
+
+
+### Bug Fixes
+
+* Revert deletion of required setup files ([a62185f](https://github.com/dy0gu/firewatcher/commit/a62185f25c72e99a40f97cd4c8cb2c7bb64f7121))
+
 ## [2.0.2](https://github.com/dy0gu/firewatcher/compare/v2.0.1...v2.0.2) (2025-03-17)
 
 
