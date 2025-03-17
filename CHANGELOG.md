@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.5](https://github.com/dy0gu/firewatcher/compare/v2.1.4...v2.1.5) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update docker build reading ([977f891](https://github.com/dy0gu/firewatcher/commit/977f8913e3a94ec769d0e5b8835310e4121f7e11))
+
 ## [2.1.4](https://github.com/dy0gu/firewatcher/compare/v2.1.3...v2.1.4) (2025-03-17)
 
 
