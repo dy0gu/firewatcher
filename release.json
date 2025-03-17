@@ -9,5 +9,8 @@
         {
             "type": "sentence-case"
         }
-    ]
+    ],
+    "packages": {
+        ".": {}
+    }
 }

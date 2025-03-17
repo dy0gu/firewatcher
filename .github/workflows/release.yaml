@@ -22,6 +22,7 @@ jobs:
         id: metadata
         with:
           config-file: release.json
+          manifest-file: .manifest.json
   build:
     permissions:
       contents: read
