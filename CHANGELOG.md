@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.8](https://github.com/dy0gu/firewatcher/compare/v2.1.7...v2.1.8) (2025-03-17)
+
+
+### Bug Fixes
+
+* Update image labeling ([3e7c355](https://github.com/dy0gu/firewatcher/commit/3e7c355f08c6212260608e906d0b171a138e498d))
+
 ## [2.1.7](https://github.com/dy0gu/firewatcher/compare/v2.1.6...v2.1.7) (2025-03-17)
 
 
