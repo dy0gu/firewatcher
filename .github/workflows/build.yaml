@@ -2,6 +2,11 @@ name: build
 
 on:
   workflow_call:
+    inputs:
+      version:
+        description: "Semver build version, for docker metadata"
+        required: true
+        type: string
 
 permissions:
   contents: read

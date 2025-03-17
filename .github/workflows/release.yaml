@@ -16,6 +16,7 @@ jobs:
   metadata:
     runs-on: ubuntu-latest
     outputs:
+      tag-name: ${{ steps.metadata.outputs.tag_name }}
       release-created: ${{ steps.metadata.outputs.release_created }}
     steps:
       - uses: googleapis/release-please-action@v4
@@ -30,3 +31,5 @@ jobs:
     needs: [metadata]
     if: ${{ needs.metadata.outputs.release-created}}
     uses: ./.github/workflows/build.yaml
+    with:
+      version: ${{ needs.metadata.outputs.tag-name }}
