@@ -24,6 +24,9 @@ jobs:
           config-file: release.json
           manifest-file: .manifest.json
   build:
+    permissions:
+      contents: read
+      packages: write
     needs: [metadata]
     if: ${{ needs.metadata.outputs.release-created}}
     uses: ./.github/workflows/build.yaml
