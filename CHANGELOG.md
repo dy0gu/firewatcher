@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/dy0gu/firewatcher/compare/v2.0.1...v2.0.2) (2025-03-17)
+
+
+### Bug Fixes
+
+* Bump docker builder version ([683e26e](https://github.com/dy0gu/firewatcher/commit/683e26ed940988b4f6a4897761ffe8c193c4c239))
+
 ## [2.0.1](https://github.com/dy0gu/firewatcher/compare/v2.0.0...v2.0.1) (2025-03-17)
 
 
