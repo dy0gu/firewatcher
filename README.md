@@ -53,7 +53,7 @@ This bot can be added to discord servers through the following [link](https://di
 
 ## Deployment 🚀
 
-The bot is automatically built by a pipeline with every release, so a **Docker** image is available in the **Packages** section of the repository.
+The bot is automatically built by a pipeline with every release, so a **Docker** image is available in the **Packages** section of the repository. The build images are also published on Docker Hub.
 
 - Supply the [required environment variables](.env.example) when running the container, just like in development.
 
