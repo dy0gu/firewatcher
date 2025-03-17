@@ -1,6 +1,4 @@
 # Docker
-**/.dockerignore
-**/Dockerfile
 **/docker-compose.yml
 **/.pre-commit-config.yaml
 **/test/
@@ -11,7 +9,7 @@
 **/.gitmodules
 **/.gitkeep
 
-# Copied from .gitignore
+# Copied from .gitignore, with some exceptions (!) removed
 
 # IDE
 **/.idea/
@@ -20,6 +18,7 @@
 
 # Environment
 **/.env*
+**/*.pem*
 **/.venv
 **/env/
 **/venv/
@@ -27,7 +26,6 @@
 **/env.bak/
 **/venv.bak/
 **/.conda/
-**/!.env.example
 
 # Cache
 **/*$py.class
