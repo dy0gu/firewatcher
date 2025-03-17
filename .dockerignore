@@ -1,6 +1,7 @@
 # Docker
+**/.dockerignore
+**/Dockerfile
 **/docker-compose.yml
-**/.pre-commit-config.yaml
 **/test/
 **/.github/
 **/.git/
@@ -8,6 +9,12 @@
 **/.gitattributes
 **/.gitmodules
 **/.gitkeep
+**/.manifest.json
+**/release.json
+**/README.md
+**/CHANGELOG.md
+**/LICENSE
+**/.pre-commit-config.yaml
 
 # Copied from .gitignore, with some exceptions (!) removed
 
