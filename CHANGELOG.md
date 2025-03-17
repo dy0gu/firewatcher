@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/dy0gu/firewatcher/compare/v2.0.3...v2.1.0) (2025-03-17)
+
+
+### Features
+
+* Add license ([4a3b366](https://github.com/dy0gu/firewatcher/commit/4a3b36654a75c04d395a5145ff4ef07ebd14b866))
+
 ## [2.0.3](https://github.com/dy0gu/firewatcher/compare/v2.0.2...v2.0.3) (2025-03-17)
 
 
