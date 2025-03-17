@@ -8,7 +8,7 @@ permissions:
   packages: write
 
 concurrency:
-  group: ${{ github.workflow }}-build-${{ github.ref }}
+  group: ${{ github.workflow_ref }}
   cancel-in-progress: true
 
 jobs:
@@ -22,9 +22,10 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - uses: docker/metadata-action@v5
-        id: meta
+        id: metadata
         with:
-          images: ghcr.io/dy0gu/firewatcher
+          images: ghcr.io/${{ github.repository }}
+          tags: type=semver,pattern={{version}}
       - uses: docker/build-push-action@v6
         with:
           context: .
