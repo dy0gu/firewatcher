@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.2](https://github.com/dy0gu/firewatcher/compare/v2.1.1...v2.1.2) (2025-03-17)
+
+
+### Bug Fixes
+
+* Add semver tag to package ([d358ff6](https://github.com/dy0gu/firewatcher/commit/d358ff6ccc62c611a6d743b8815ab306d68ccdfe))
+
 ## [2.1.1](https://github.com/dy0gu/firewatcher/compare/v2.1.0...v2.1.1) (2025-03-17)
 
 
