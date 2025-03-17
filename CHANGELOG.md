@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.3](https://github.com/dy0gu/firewatcher/compare/v2.1.2...v2.1.3) (2025-03-17)
+
+
+### Bug Fixes
+
+* Remove concurrency deadlock ([e1b3fe2](https://github.com/dy0gu/firewatcher/commit/e1b3fe20faf0bd63e99f47c17a9512673fbd9ba3))
+
 ## [2.1.2](https://github.com/dy0gu/firewatcher/compare/v2.1.1...v2.1.2) (2025-03-17)
 
 
