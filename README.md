@@ -60,6 +60,9 @@ The bot is automatically built by a pipeline with every release, so a **Docker**
 - Start the container using the provided `docker-compose.yaml`:
 
   ```shell
+  # The example compose will try to pull from the registry first, and only builds on fails.
+  # To force a build first, simply remove the image key from the service definition.
+
   docker compose up --build --force-recreate --detach --wait --wait-timeout 120
   ```
 
