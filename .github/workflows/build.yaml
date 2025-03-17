@@ -30,7 +30,7 @@ jobs:
         id: metadata
         with:
           images: ghcr.io/${{ github.repository }}
-          tags: type=semver,pattern={{version}}
+          tags: type=semver,pattern={{version}},value=${{ inputs.version }}
       - uses: docker/build-push-action@v6
         with:
           context: .
