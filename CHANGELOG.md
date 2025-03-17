@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.4](https://github.com/dy0gu/firewatcher/compare/v2.1.3...v2.1.4) (2025-03-17)
+
+
+### Bug Fixes
+
+* Add correct label to docker build ([aa80c29](https://github.com/dy0gu/firewatcher/commit/aa80c294978ab6033d71917a01b8f960b49b461d))
+
 ## [2.1.3](https://github.com/dy0gu/firewatcher/compare/v2.1.2...v2.1.3) (2025-03-17)
 
 
