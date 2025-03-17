@@ -1,12 +1,9 @@
-name: release
+# https://github.com/googleapis/release-please?tab=readme-ov-file#how-do-i-change-the-version-number
+name: "release"
 
 on:
   push:
     branches: [main]
-
-permissions:
-  contents: write
-  pull-requests: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -15,6 +12,9 @@ concurrency:
 jobs:
   metadata:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     outputs:
       tag-name: ${{ steps.metadata.outputs.tag_name }}
       release-created: ${{ steps.metadata.outputs.release_created }}
