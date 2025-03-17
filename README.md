@@ -1,6 +1,6 @@
 # Wildfire info with discord! 🔥ℹ️
 
-![logo](src/assets/images/logo.png)
+![logo](src/assets/logo.png)
 
 Firewatcher gets its data from the [fogos.pt](https://fogos.pt/) API and is mostly a simple wrapper around it. Due to the nature of the API, the bot is only able to provide information about wildfires in Portugal.
 
