@@ -8,7 +8,7 @@ permissions:
   packages: write
 
 concurrency:
-  group: ${{ github.workflow_ref }}
+  group: ${{ github.workflow }}-build-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
