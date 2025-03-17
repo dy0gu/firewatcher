@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.6](https://github.com/dy0gu/firewatcher/compare/v2.1.5...v2.1.6) (2025-03-17)
+
+
+### Bug Fixes
+
+* Add docker hub publishing ([02448e6](https://github.com/dy0gu/firewatcher/commit/02448e6403a5bebbcfd088f10d752a4a048cc185))
+
 ## [2.1.5](https://github.com/dy0gu/firewatcher/compare/v2.1.4...v2.1.5) (2025-03-17)
 
 
